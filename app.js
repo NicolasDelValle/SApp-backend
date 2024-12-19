@@ -37,6 +37,4 @@ app.use(function (err, req, res, next) {
   });
 });
 
-app.listen(process.env.APP_PORT, () => console.log("server running"));
-
 module.exports = app;
