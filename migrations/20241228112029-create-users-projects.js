@@ -14,11 +14,14 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       project_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       role_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
 
