@@ -7,22 +7,27 @@ module.exports = {
       "Permissions",
       [
         {
-          permission: "CREATE_DELETE_PROJECT",
+          permission: "DELETE_PROJECT",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          permission: "EDIT_NAME_DESCRIPTION_PROJECT",
+          permission: "EDIT_PROJECT",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          permission: "ADD_DELETE_USERS",
+          permission: "ADD_USERS",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          permission: "ASSIGN_CHANGE_ROLES",
+          permission: "REMOVE_USERS",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          permission: "MANAGE_ROLES",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -47,7 +52,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          permission: "VIEW_PROJECT_STATE",
+          permission: "VIEW_PROJECT",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
