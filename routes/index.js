@@ -1,9 +1,10 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const { auth0Middleware } = require("../middlewares/auth0");
+const registerUser = require("../middlewares/registerUser");
+const privateRoutes = require("./privateRoutes");
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  req.oidc.isAuthenticated();
-});
+const router = express.Router();
+
+router.use("/private", auth0Middleware, registerUser, privateRoutes);
 
 module.exports = router;
