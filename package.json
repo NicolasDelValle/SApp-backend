@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seedAll": "npx sequelize-cli db:seed:all",
+    "seedUndoAll": "npx sequelize-cli db:seed:undo:all"
   },
   "dependencies": {
     "axios": "^1.7.9",
