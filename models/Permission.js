@@ -1,22 +1,16 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 
-module.exports = (sequelize, DataTypes) => {
-  class Role extends Model {
+module.exports = (sequelize) => {
+  class Permission extends Model {
     static associate(models) {
-      Role.belongsToMany(models.Permissions, {
+      Permission.belongsToMany(models.Role, {
         through: models.Role_Permission,
-        foreignKey: "role_id",
-      });
-
-      Role.belongsToMany(models.User, {
-        through: models.User_Project,
-        foreignKey: "role_id",
       });
     }
   }
 
-  Role.init(
+  Permission.init(
     {
       id: {
         type: DataTypes.UUID,
@@ -24,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         allowNull: false,
       },
-      role: {
+      permission: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -32,9 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Role",
+      modelName: "Permission",
     }
   );
 
-  return Role;
+  return Permission;
 };

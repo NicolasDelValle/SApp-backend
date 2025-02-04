@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "migrate": "npx sequelize-cli db:migrate",
+    "migrateUndoAll":"npx sequelize-cli db:migrate:undo:all",
     "seedAll": "npx sequelize-cli db:seed:all",
     "seedUndoAll": "npx sequelize-cli db:seed:undo:all"
   },

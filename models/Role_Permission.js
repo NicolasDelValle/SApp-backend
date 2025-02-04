@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Roles_Permissions extends Model {
+  class Role_Permission extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,16 +11,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Roles_Permissions.init(
+  Role_Permission.init(
     {
-      idRole: DataTypes.INTEGER,
+      idRole: DataTypes.UUID,
 
-      idPermission: DataTypes.INTEGER,
+      idPermission: DataTypes.UUID,
     },
     {
       sequelize,
-      modelName: "Roles_Permissions",
+      modelName: "Role_Permission",
     }
   );
-  return Roles_Permissions;
+  return Role_Permission;
 };

@@ -4,12 +4,12 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     const roles = await queryInterface.sequelize.query(
-      `SELECT id, role FROM Roles`,
+      `SELECT id, role FROM roles`,
       { type: Sequelize.QueryTypes.SELECT }
     );
 
     const permissions = await queryInterface.sequelize.query(
-      `SELECT id, permission FROM Permissions`,
+      `SELECT id, permission FROM permissions`,
       { type: Sequelize.QueryTypes.SELECT }
     );
 
@@ -198,7 +198,7 @@ module.exports = {
         ...teamMemberPermissions,
         ...viwerPermissions,
       ],
-      {}
+      { ignoreDuplicates: true }
     );
   },
 

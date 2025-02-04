@@ -57,7 +57,7 @@ module.exports = {
           updatedAt: new Date(),
         },
       ],
-      {}
+      { ignoreDuplicates: true }
     );
   },
 

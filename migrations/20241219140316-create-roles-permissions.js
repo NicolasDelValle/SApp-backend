@@ -2,15 +2,15 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Roles_Permissions", {
+    await queryInterface.createTable("roles_permissions", {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
       },
       idRole: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         references: {
           model: "Roles",
           key: "id",
@@ -19,7 +19,7 @@ module.exports = {
         onUpdate: "CASCADE",
       },
       idPermission: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         references: {
           model: "Permissions",
           key: "id",
@@ -36,19 +36,14 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
-    await queryInterface.addConstraint("Roles_Permissions", {
+    await queryInterface.addConstraint("roles_permissions", {
       fields: ["idRole", "idPermission"],
       type: "unique",
-      name: "unique_role_permission", // Nombre opcional para la restricción
+      name: "unique_role_permission",
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint(
-      "Roles_Permissions",
-      "unique_role_permission"
-    );
-
-    await queryInterface.dropTable("Roles_Permissions");
+    await queryInterface.dropTable("roles_permissions");
   },
 };

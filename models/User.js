@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       User.belongsToMany(models.Projects, {
-        through: models.Users_projects,
+        through: models.User_Project,
         foreignKey: "user_id",
       });
     }

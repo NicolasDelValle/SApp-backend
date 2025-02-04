@@ -7,6 +7,7 @@ module.exports = {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
       allowNull: false,
+      autoIncrement: false,
     });
 
     await queryInterface.changeColumn("Users", "auth0Id", {

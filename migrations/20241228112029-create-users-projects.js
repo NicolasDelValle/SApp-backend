@@ -5,7 +5,7 @@ const { ENUM } = require("sequelize");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Users_projects", {
+    await queryInterface.createTable("users_projects", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,12 +13,12 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
       },
       project_id: {
+        type: Sequelize.UUID,
         allowNull: false,
-        type: Sequelize.INTEGER,
       },
       role_id: {
         allowNull: false,
@@ -38,14 +38,14 @@ module.exports = {
       },
     });
 
-    await queryInterface.addConstraint("Users_Projects", {
+    await queryInterface.addConstraint("users_projects", {
       fields: ["user_id", "project_id", "role_id"],
       type: "unique",
-      name: "unique_relation", // Nombre opcional para la restricción
+      name: "unique_relation",
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint("Users_Projects", "unique_relation");
-    await queryInterface.dropTable("Users_Projects");
+    await queryInterface.removeConstraint("users_projects", "unique_relation");
+    await queryInterface.dropTable("users_projects");
   },
 };

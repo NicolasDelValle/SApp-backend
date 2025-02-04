@@ -2,25 +2,31 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class Projects extends Model {
+  class Project extends Model {
     static associate(models) {
-      Projects.belongsToMany(models.User, {
-        through: models.Users_projects,
+      Project.belongsToMany(models.User, {
+        through: models.User_Project,
         foreignKey: "project_id",
       });
     }
   }
 
-  Projects.init(
+  Project.init(
     {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+        allowNull: false,
+      },
       projectName: { type: DataTypes.TEXT, allowNull: false },
       projectDescription: { type: DataTypes.TEXT, allowNull: true },
     },
     {
       sequelize,
-      modelName: "Projects",
+      modelName: "Project",
     }
   );
 
-  return Projects;
+  return Project;
 };
